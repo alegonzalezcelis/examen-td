@@ -8,7 +8,7 @@ export default function Characters (props) {
     return (
     <div className="characters">
         <h1>Personajes</h1>
-        <span className="back-home" onClick={resetCharacters}>PRUEBA DE DEPLOY</span>
+        <span className="back-home" onClick={resetCharacters}>CAMBIO DE TEXTO NUEVAMENTE</span>
         <div className="container-characters">
             {characters.map((character, index) => (
                 <div className="character-container" key={index}>
