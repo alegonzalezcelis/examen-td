@@ -1,13 +1,25 @@
+# Especifica el corredor a utilizar
 image: node:18
 
+# Define las etapas del pipeline
 stages:
   - build
-
+ 
+# Define las tareas del pipeline
 build:
+  # Asigna la tarea a la etapa "build"
   stage: build
+
+  # Define los comandos a ejecutar
   script:
     - npm install
     - npm run build
+
+  # Guarda los archivos generados por la compilación como artefactos
   artifacts:
     paths:
       - build/
+
+  # Etiqueta el corredor que ejecutará la tarea
+  tags:
+    - runner|
