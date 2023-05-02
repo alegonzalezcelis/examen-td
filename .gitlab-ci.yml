@@ -5,6 +5,7 @@ build:
   script:
     - npm install
     - npm run build
+    - apt-get update && apt-get install -y zip
     - zip -r artifact.zip build/
     - apt-get update && apt-get install -y maven
   artifacts:
