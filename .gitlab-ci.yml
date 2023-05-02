@@ -23,4 +23,5 @@ build:
 
   # Etiqueta el corredor que ejecutará la tarea
   tags:
-    - runner|
+    - runner
+
