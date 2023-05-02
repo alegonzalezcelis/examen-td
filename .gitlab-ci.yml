@@ -23,3 +23,7 @@ deploy:
       -DrepositoryId=nexus-releases
       -Dfile=artifact.zip
       -Dpackaging=zip
+
+  # Etiqueta el corredor que ejecutará la tarea
+  tags:
+    - runner|
