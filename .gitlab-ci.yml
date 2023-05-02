@@ -1,4 +1,3 @@
-# Especifica el corredor a utilizar
 image: node:18
 
 # Define las etapas del pipeline
@@ -14,6 +13,7 @@ build:
   script:
     - npm install
     - npm run build
+    - apt-get update && apt-get install -y maven
     - mvn deploy
 
   # Guarda los archivos generados por la compilación como artefactos
