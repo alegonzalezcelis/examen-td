@@ -1,26 +1,24 @@
 image: node:18
-
-# Define las etapas del pipeline
-stages:
-  - build
- 
-# Define las tareas del pipeline
 build:
-  # Asigna la tarea a la etapa "build"
   stage: build
-
-  # Define los comandos a ejecutar
   script:
     - npm install
     - npm run build
+    - zip -r artifact.zip build/
     - apt-get update && apt-get install -y maven
-    - mvn deploy
-
-  # Guarda los archivos generados por la compilación como artefactos
   artifacts:
     paths:
-      - build/
+      - artifact.zip
 
-  # Etiqueta el corredor que ejecutará la tarea
-  tags:
-    - runner|
+publish:
+  stage: publish
+  image: maven:3-jdk-8
+  script:
+    - mvn deploy:deploy-file
+      -DgroupId=com.example
+      -DartifactId=my-artifact
+      -Dversion=1.0
+      -Durl=http://34.171.106.98:8081/service/rest/repository/browse/repoapp/
+      -DrepositoryId=nexus-releases
+      -Dfile=artifact.zip
+      -Dpackaging=zip
