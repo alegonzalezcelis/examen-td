@@ -10,6 +10,10 @@ build:
   artifacts:
     paths:
       - artifact.zip
+        # Etiqueta el corredor que ejecutará la tarea
+  tags:
+    - runner|
+
 
 deploy:
   stage: deploy
