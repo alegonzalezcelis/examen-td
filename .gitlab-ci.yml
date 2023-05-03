@@ -5,9 +5,10 @@ workflow:
     - if: $CI_COMMIT_BRANCH == "main"
     
 stages:
+  - sonarqube-check
   - build
   - deploy
-  - sonarqube-check
+  
 
 sonarqube-check:
   image: 
@@ -23,10 +24,6 @@ sonarqube-check:
   script: 
     - sonar-scanner
   allow_failure: true
-  rules:
-    - if: $CI_COMMIT_BRANCH == 'main'
-
-
 
 build:
   stage: build
