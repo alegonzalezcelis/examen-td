@@ -19,8 +19,8 @@ deploy:
   image: maven:3-jdk-8
   script:
     - mvn deploy:deploy-file
-      -DgroupId=com
-      -DartifactId=app
+      -DgroupId=com.app
+      -DartifactId=rickapp
       -Dversion=v1.20
       -Durl=http://34.171.106.98:8081/repository/repoapp/
       -DrepositoryId=nexus-releases
