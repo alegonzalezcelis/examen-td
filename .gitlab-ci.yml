@@ -21,12 +21,13 @@ deploy:
     - mvn deploy:deploy-file
       -DgroupId=com
       -DartifactId=app
-      -Dversion=v1.0
+      -Dversion=1.0
       -Durl=http://34.171.106.98:8081/repository/repoapp/
       -DrepositoryId=nexus-releases
       -Dfile=artifact.zip
       -Dpackaging=zip
       -DrepositoryUsername=conecta
       -DrepositoryPassword=Koke1988
+      -DpomFile=path/to/pom.xml
   tags:
     - runner|
