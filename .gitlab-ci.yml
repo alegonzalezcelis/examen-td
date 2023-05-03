@@ -20,12 +20,12 @@ deploy:
   stage: deploy
   image: maven:3-jdk-8
   script:
-    - mvn deploy:deploy-file
+    - mvn deploy:deploy-file -X
       -DgroupId=com
       -DartifactId=app
       -Dversion=v1.0
       -Durl=http://34.171.106.98:8081/service/rest/repository/browse/repoapp/
-      -DrepositoryId=nexus-releases
+      -DrepositoryId=nexus-releases 
       -Dfile=artifact.zip
       -Dpackaging=zip
 
