@@ -23,7 +23,7 @@ deploy:
     - mvn deploy:deploy-file
       -DgroupId=com
       -DartifactId=app
-      -Dversion=v1.0
+      -Dversion=v1.21
       -Durl=http://10.128.0.18:8081/repository/repoapp/
       -DrepositoryId=nexus-releases
       -Dfile=artifact.zip
