@@ -20,7 +20,7 @@ deploy:
     - apt-get update && apt-get install -y git
     - TAG_VERSION=$(git describe --tags $(git rev-list --tags --max-count=1 --no-walk origin/desarrollo))
     - VERSION=$(echo "${TAG_VERSION}" | grep -oP "v\d+\.\d+")
-    - curl -o /opt/paso/descargaapp/rickapp-${VERSION}.zip http://10.128.0.18:8081/repository/repoapp/com/app/${VERSION}/rickapp-${VERSION}.zip
+    - curl -o artifact-${VERSION}.zip http://10.128.0.18:8081/repository/repoapp/com/app/${VERSION}/artifact-${VERSION}.zip
   tags:
     - runner|
 
