@@ -17,6 +17,7 @@ build:
 deploy:
   stage: deploy
   script:
+    - npm install -g semver
     - apt-get update && apt-get install -y git
     - TAG_VERSION=$(git describe --tags $(git rev-list --tags --max-count=1))
     - NEXT_VERSION=$(semver --increment minor "${TAG_VERSION}")
