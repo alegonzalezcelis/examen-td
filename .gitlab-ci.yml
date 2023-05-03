@@ -20,7 +20,7 @@ deploy:
     - apt-get update && apt-get install -y git
     - TAG_VERSION=$(git describe --tags $(git rev-list --tags --max-count=1))
     - VERSION=$(echo "${TAG_VERSION}" | grep -oP "v\d+\.\d+")
-    - curl -o artifact-${VERSION}.zip http://10.128.0.18:8081/repository/repoapp/com/app/${VERSION}/artifact-${VERSION}.zip
+    - curl -v -u --upload-file ./artifact-${VERSION}.zip http://10.128.0.18:8081/repository/repoapp/com/app/${VERSION}/artifact-${VERSION}.zip
   tags:
     - runner|
 
