@@ -2,7 +2,7 @@
   <servers>
     <server>
       <id>nexus-releases</id>
-      <username>admin</username>
+      <username>conecta</username>
       <password>Koke1988</password>
     </server>
   </servers>
