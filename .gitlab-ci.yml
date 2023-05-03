@@ -24,7 +24,7 @@ deploy:
       -DgroupId=com
       -DartifactId=app
       -Dversion=v1.0
-      -Durl=http://34.171.106.98:8081/repository/browse/repoapp/
+      -Durl=http://34.171.106.98:8081/repository/repoapp/
       -DrepositoryId=nexus-releases 
       -Dfile=artifact.zip
       -Dpackaging=zip
