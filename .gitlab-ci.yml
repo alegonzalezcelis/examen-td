@@ -26,8 +26,7 @@ deploy:
       -DrepositoryId=nexus-releases
       -Dfile=artifact.zip
       -Dpackaging=zip
-      -DrepositoryUsername=conecta
-      -DrepositoryPassword=Koke1988
       -DpomFile=pom.xml
   tags:
     - runner|
+
