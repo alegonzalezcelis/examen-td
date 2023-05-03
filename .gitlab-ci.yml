@@ -28,6 +28,6 @@ deploy:
       -Dpackaging=zip
       -DrepositoryUsername=conecta
       -DrepositoryPassword=Koke1988
-      -DpomFile=path/to/pom.xml
+      -DpomFile=/pom.xml
   tags:
     - runner|
