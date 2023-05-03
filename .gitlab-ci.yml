@@ -21,9 +21,9 @@ deploy:
   image: maven:3-jdk-8
   script:
     - mvn deploy:deploy-file
-      -DgroupId=com.app
-      -DartifactId=v
-      -Dversion=1.0
+      -DgroupId=com
+      -DartifactId=app
+      -Dversion=v1.0
       -Durl=http://34.171.106.98:8081/service/rest/repository/browse/repoapp/
       -DrepositoryId=nexus-releases
       -Dfile=artifact.zip
