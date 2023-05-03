@@ -1,30 +1,39 @@
 image: node:18
 
+stages:
+  - build
+  - deploy
+
 build:
   stage: build
   script:
     - npm install
     - npm run build
     - apt-get update && apt-get install -y zip
-    - zip -r artifact.zip build/
+    - zip -r "artifact.zip" build/
     - apt-get update && apt-get install -y maven
   artifacts:
     paths:
       - artifact.zip
+
   tags:
     - runner|
 
 deploy:
   stage: deploy
   script:
-    - npm install -g semver --unsafe-perm=true --allow-root
     - apt-get update && apt-get install -y git
-    - TAG_VERSION=$(git describe --tags --abbrev=0)
-    - NEXT_VERSION=$(semver --increment minor "${TAG_VERSION}")
-    - curl -v -u conecta:Koke1988 --upload-file ./artifact.zip "http://10.128.0.18:8081/repository/repoapp/com/app/${NEXT_VERSION}/artifact-${NEXT_VERSION}.zip"
-    - echo "TAG_VERSION=${TAG_VERSION}"
-    - echo "NEXT_VERSION=${NEXT_VERSION}"
-
+    - npm install -g semver
+    - export LATEST_TAG=$(git ls-remote --tags "http://root:${GITLAB_TOKEN}@${GITLAB_URL}/${CI_PROJECT_PATH}.git" | awk -F"/" '{print $NF}' | tail -1 | sed 's/\^{//;s/}//')
+    - export TAG_VERSION=${LATEST_TAG:-1.0.0}
+    - export NEXT_VERSION=$(semver --increment minor "${TAG_VERSION}")
+    - curl -v -u conecta:Koke1988 --upload-file "./artifact.zip" "http://10.128.0.18:8081/repository/repoapp/com/app/${NEXT_VERSION}/artifact_${NEXT_VERSION}.zip"
+    - git clone http://root:glpat-ZYs-7mE-zkxjAyNGYgbw@10.128.0.18/root/rickymortis.git
+    - cd rickymortis
+    - git tag "${NEXT_VERSION}"
+    - git push origin "${NEXT_VERSION}"
+    
   tags:
     - runner|
+
 
