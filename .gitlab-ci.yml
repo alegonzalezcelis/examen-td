@@ -21,8 +21,8 @@ deploy:
     - mvn deploy:deploy-file
       -DgroupId=com
       -DartifactId=app
-      -Dversion=v1.21
-      -Durl=http://34.171.106.98:8081/repository/repoappreact/
+      -Dversion=v1.20
+      -Durl=http://34.171.106.98:8081/repository/repoapp/
       -DrepositoryId=nexus-releases
       -Dfile=artifact.zip
       -Dpackaging=zip
