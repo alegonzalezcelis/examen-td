@@ -16,17 +16,7 @@ build:
 
 deploy:
   stage: deploy
-  image: maven:3-jdk-8
   script:
-    - mvn deploy:deploy-file
-      -DgroupId=com
-      -DartifactId=app
-      -Dversion=1.0
-      -Durl=http://34.171.106.98:8081/repoapp/
-      -DrepositoryId=nexus-releases
-      -Dfile=artifact.zip
-      -Dpackaging=zip
-
+    - curl -v -u conecta:Koke1988 --upload-file ./artifact.zip "http://10.128.0.18:8081/repository/repoapp/com/app/v1.21/artifact.zip"
   tags:
     - runner|
-
