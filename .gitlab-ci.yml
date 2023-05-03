@@ -11,10 +11,8 @@ build:
   artifacts:
     paths:
       - artifact.zip
-        # Etiqueta el corredor que ejecutará la tarea
   tags:
     - runner|
-
 
 deploy:
   stage: deploy
@@ -28,7 +26,7 @@ deploy:
       -DrepositoryId=nexus-releases
       -Dfile=artifact.zip
       -Dpackaging=zip
-
-  # Etiqueta el corredor que ejecutará la tarea
+      -DrepositoryUsername=$NEXUS_USERNAME
+      -DrepositoryPassword=$NEXUS_PASSWORD
   tags:
     - runner|
