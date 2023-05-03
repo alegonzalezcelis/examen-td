@@ -4,19 +4,6 @@
   <artifactId>app</artifactId>
   <version>v1.21</version>
   
-  <distributionManagement>
-    <repository>
-      <id>nexus-releases</id>
-      <name>Nexus Releases Repository</name>
-      <url>http://10.128.0.18:8081/repository/repoappreact/</url>
-    </repository>
-    <snapshotRepository>
-      <id>nexus-snapshots</id>
-      <name>Nexus Snapshots Repository</name>
-      <url>http://10.128.0.18:8081/repository/repoappreact/</url>
-    </snapshotRepository>
-  </distributionManagement>
-
   <build>
     <plugins>
       <plugin>
@@ -26,6 +13,7 @@
         <configuration>
           <url>http://10.128.0.18:8081/repository/repoappreact/</url>
           <repositoryId>nexus-releases</repositoryId>
+          <serverId>nexus-releases</serverId> <!-- Agregar esta línea para utilizar las credenciales de Nexus -->
         </configuration>
       </plugin>
     </plugins>
