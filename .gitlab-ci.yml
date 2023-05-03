@@ -22,7 +22,7 @@ deploy:
       -DgroupId=com
       -DartifactId=app
       -Dversion=1.0
-      -Durl=http://34.171.106.98:8081/service/rest/repository/browse/repoapp/
+      -Durl=http://34.171.106.98:8081/
       -DrepositoryId=nexus-releases
       -Dfile=artifact.zip
       -Dpackaging=zip
