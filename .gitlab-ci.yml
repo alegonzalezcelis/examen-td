@@ -15,7 +15,6 @@ build:
     - npm install
     - npm run build
     - apt-get update && apt-get install -y zip
-    - apt-get update && apt-get install -y sonar-scanner 
     - zip -r "artifact.zip" build/
     - apt-get update && apt-get install -y maven
   artifacts:
@@ -39,7 +38,8 @@ sonarqube:
   allow_failure: true
   only:
     - $CI_COMMIT_BRANCH
-
+  tags:
+    - runner|
 
 
 deploy:
