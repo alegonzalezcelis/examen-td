@@ -1,5 +1,21 @@
 image: node:18
 
+build:
+  stage: build
+  script:
+    - npm install
+    - npm run build
+    - apt-get update && apt-get install -y zip
+    - zip -r artifact.zip build/
+    - apt-get update && apt-get install -y maven
+  artifacts:
+    paths:
+      - artifact.zip
+        # Etiqueta el corredor que ejecutará la tarea
+  tags:
+    - runner|
+
+
 deploy:
   stage: deploy
   image: maven:3-jdk-8
