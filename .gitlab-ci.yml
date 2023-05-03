@@ -1,5 +1,8 @@
 image: node:18
 
+variables:
+  VERSION: $CI_COMMIT_TAG
+
 build:
   stage: build
   script:
@@ -17,6 +20,13 @@ build:
 deploy:
   stage: deploy
   script:
-    - curl -v -u conecta:Koke1988 --upload-file ./artifact.zip "http://10.128.0.18:8081/repository/repoapp/com/app/v1.21/artifact.zip"
+    - mvn deploy:deploy-file
+      -DgroupId=com
+      -DartifactId=app
+      -Dversion=$VERSION
+      -Durl=http://34.171.106.98:8081/repoapp/
+      -DrepositoryId=nexus-releases
+      -Dfile=artifact.zip
+      -Dpackaging=zip
   tags:
     - runner|
