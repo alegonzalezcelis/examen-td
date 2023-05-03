@@ -19,7 +19,7 @@ deploy:
   stage: deploy
   script:
     - apt-get update && apt-get install -y git
-    - if [ -z "$(git tag --points-at HEAD)" ]; then export VERSION="1.0.0"; else export TAG_VERSION=$(git describe --tags $(git rev-list --tags --max-count=1)); export VERSION=$(echo "${TAG_VERSION}" | sed 's/v//'); fi
+    - if [ -z "$(git tag --points-at HEAD)" ]; then export VERSION="1.0"; else export TAG_VERSION=$(git describe --tags $(git rev-list --tags --max-count=1)); export VERSION=$(echo "${TAG_VERSION}" | sed 's/v//'); fi
     - if ! command -v semver &> /dev/null; then npm install -g semver; fi
     - export NEXT_VERSION=$(semver --increment patch "${VERSION}")
     - curl -v -u conecta:Koke1988 --upload-file ./artifact.zip "http://10.128.0.18:8081/repository/repoapp/com/app/v${NEXT_VERSION}/artifact.zip"
