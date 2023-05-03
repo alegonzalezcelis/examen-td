@@ -8,12 +8,6 @@ build:
     - apt-get update && apt-get install -y zip
     - zip -r artifact.zip build/
     - apt-get update && apt-get install -y maven
-    - apt-get update && apt-get install -y git
-    - git tag v1.0
-    - git push origin v1.0
-
-    - VERSION=$(git describe --tags)
-    
   artifacts:
     paths:
       - artifact.zip
@@ -23,6 +17,8 @@ build:
 deploy:
   stage: deploy
   script:
+    - apt-get update && apt-get install -y git
+    - VERSION=$(git describe --tags)
     - curl -v -u conecta:Koke1988 --upload-file ./artifact.zip "http://10.128.0.18:8081/repository/repoapp/com/app/$VERSION/artifact.zip"
   tags:
     - runner|
