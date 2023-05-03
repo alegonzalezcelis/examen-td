@@ -9,7 +9,11 @@ build:
     - zip -r artifact.zip build/
     - apt-get update && apt-get install -y maven
     - apt-get update && apt-get install -y git
+    - git tag v1.0
+    - git push origin v1.0
+
     - VERSION=$(git describe --tags)
+    
   artifacts:
     paths:
       - artifact.zip
