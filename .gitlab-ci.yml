@@ -1,8 +1,9 @@
 image: node:18
 
-only:
-  - branches
-
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+    
 stages:
   - build
   - deploy
