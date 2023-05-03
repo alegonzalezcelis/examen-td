@@ -5,9 +5,9 @@
          
   <modelVersion>4.0.0</modelVersion>
   
-  <groupId>com.app</groupId>
-  <artifactId>my-artifact</artifactId>
-  <version>1.0</version>
+  <groupId>com</groupId>
+  <artifactId>app</artifactId>
+  <version>v1.0</version>
   
   <!-- Aquí van las dependencias -->
   
