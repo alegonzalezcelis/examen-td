@@ -6,7 +6,6 @@ workflow:
     
 stages:
   - build
-  - sonarqube
   - deploy
 
 build:
@@ -21,23 +20,6 @@ build:
     paths:
       - artifact.zip
 
-  tags:
-    - runner|
-
-sonarqube:
-  stage: sonarqube
-  image: sonarsource/sonar-scanner-cli:latest
-  script:
-    - sonar-scanner \
-        -Dsonar.host.url=http://34.171.106.98:9000/ \
-        -Dsonar.login=squ_88925c401888013db97bc658695f36cdd27b2429 \
-        -Dsonar.projectKey=root_rickymortis_AYe7fCk7YADZ9WN9sTga \
-        -Dsonar.projectName=rickymortis \
-        -Dsonar.projectVersion=$CI_COMMIT_SHA \
-        -Dsonar.sources=.
-  allow_failure: true
-  only:
-    - $CI_COMMIT_BRANCH
   tags:
     - runner|
 
