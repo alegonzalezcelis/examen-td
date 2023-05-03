@@ -4,6 +4,19 @@
   <artifactId>app</artifactId>
   <version>v1.21</version>
   
+  <distributionManagement>
+    <repository>
+      <id>nexus-releases</id>
+      <name>Nexus Releases Repository</name>
+      <url>http://10.128.0.18:8081/repository/repoappreact/</url>
+    </repository>
+    <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <name>Nexus Snapshots Repository</name>
+      <url>http://10.128.0.18:8081/repository/repoappreact/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
   <build>
     <plugins>
       <plugin>
@@ -11,7 +24,7 @@
         <artifactId>maven-deploy-plugin</artifactId>
         <version>2.8.2</version>
         <configuration>
-          <url>http://10.128.0.18:8081/repository/repoapp/</url>
+          <url>http://10.128.0.18:8081/repository/repoappreact/</url>
           <repositoryId>nexus-releases</repositoryId>
         </configuration>
       </plugin>
