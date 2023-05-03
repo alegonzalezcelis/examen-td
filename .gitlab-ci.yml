@@ -1,8 +1,5 @@
 image: node:18
 
-variables:
-  VERSION: $CI_COMMIT_TAG
-
 build:
   stage: build
   script:
@@ -11,6 +8,7 @@ build:
     - apt-get update && apt-get install -y zip
     - zip -r artifact.zip build/
     - apt-get update && apt-get install -y maven
+    - VERSION=$(git describe --tags)
   artifacts:
     paths:
       - artifact.zip
@@ -20,13 +18,6 @@ build:
 deploy:
   stage: deploy
   script:
-    - mvn deploy:deploy-file
-      -DgroupId=com
-      -DartifactId=app
-      -Dversion=$VERSION
-      -Durl=http://34.171.106.98:8081/repoapp/
-      -DrepositoryId=nexus-releases
-      -Dfile=artifact.zip
-      -Dpackaging=zip
+    - curl -v -u conecta:Koke1988 --upload-file ./artifact.zip "http://10.128.0.18:8081/repository/repoapp/com/app/$VERSION/artifact.zip"
   tags:
     - runner|
