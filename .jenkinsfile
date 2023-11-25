@@ -23,17 +23,9 @@ pipeline {
             }
         }
 
-        stage('Instalar Servidor') {
+        stage('Iniciar la aplicación') {
             steps {
-                sh 'npm install -g serve'
-            }
-        }
-
-        stage('Deploy Servidor') {
-            steps {
-                sh 'serve -s build'
-                open 'http://localhost:3000'
-                exit 0
+                sh 'npm start'
             }
         }
     }
