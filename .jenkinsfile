@@ -33,6 +33,7 @@ pipeline {
             steps {
                 sh 'serve -s build'
                 open 'http://localhost:3000'
+                exit 0
             }
         }
     }
