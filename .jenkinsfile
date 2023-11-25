@@ -32,6 +32,7 @@ pipeline {
         stage('Deploy Servidor') {
             steps {
                 sh 'serve -s build'
+                open 'http://localhost:3000'
             }
         }
     }
