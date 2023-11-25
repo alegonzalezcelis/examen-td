@@ -22,6 +22,18 @@ pipeline {
                 sh 'npm run build'
             }
         }
+
+        stage('Instalar Servidor') {
+            steps {
+                sh 'npm install -g serve'
+            }
+        }
+
+        stage('Deploy Servidor') {
+            steps {
+                sh 'serve -s build'
+            }
+        }
     }
     
     post {
