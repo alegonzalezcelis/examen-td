@@ -2,12 +2,12 @@ pipeline {
     agent any
     
     stages {
-        // stage('Clonar Repositorio') {
-        //     steps {
-        //         // Clonar el repositorio de tu aplicación desde el control de versiones
-        //         git 'https://github.com/softupcl/react-prueba-td.git'
-        //     }
-        // }
+        stage('Clonar Repositorio') {
+            steps {
+                // Clonar el repositorio de tu aplicación desde Github
+                git 'https://github.com/alegonzalezcelis/examen-td'
+            }
+        }
         
         stage('Instalar Dependencias') {
             steps {
@@ -19,7 +19,7 @@ pipeline {
         stage('Construir la Aplicación') {
             steps {
                 // Construir la aplicación React
-                sh 'npm build'
+                sh 'npm start'
             }
         }
     }
